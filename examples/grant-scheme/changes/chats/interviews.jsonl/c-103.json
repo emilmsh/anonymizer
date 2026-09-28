@@ -1,0 +1,20 @@
+{
+  "document_id": "chats/interviews.jsonl/c-103",
+  "policy_version": "1",
+  "model": "example, written by hand",
+  "passes": 2,
+  "changes": [
+    {
+      "position": null,
+      "field": "messages[3].content",
+      "original": "Jon",
+      "occurrence": 1,
+      "action": "replace",
+      "replacement": "[PERSON_1]",
+      "category": "person",
+      "reason": "The participant's first name."
+    }
+  ],
+  "residual_risk": "low",
+  "needs_review": []
+}

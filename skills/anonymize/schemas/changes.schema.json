@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/emilmsh/anonymizer/skills/anonymize/schemas/changes.schema.json",
+  "title": "Change list for one document",
+  "description": "Every change to make in one document (a text file, a Word document, a CSV file or one JSON Lines record) to anonymize it. The file holds the original excerpts and is therefore personal data. It stays in the project folder.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["document_id", "policy_version", "changes", "residual_risk", "needs_review"],
+  "properties": {
+    "document_id": {
+      "type": "string",
+      "description": "The document ID: the path under raw/ (for example interview-01.docx), and for JSON Lines the path plus /<record ID>."
+    },
+    "policy_version": {
+      "type": "string",
+      "description": "policy_version from the policy.json the list was made under."
+    },
+    "model": {
+      "type": "string",
+      "description": "The model or deployment that made the list."
+    },
+    "passes": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "How many times the document has been gone through: 1 after the first pass, 2 after the re-read, and so on."
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["position", "field", "original", "occurrence", "action", "replacement", "category", "reason"],
+        "properties": {
+          "position": {
+            "type": ["integer", "null"],
+            "description": "Where in the document: line number in .txt and .md, paragraph number in .docx, row number without the header row in .csv, null in .jsonl. segments.py shows it."
+          },
+          "field": {
+            "type": "string",
+            "minLength": 1,
+            "description": "content for text files and Word, the column name in .csv, the path to the value in .jsonl (for example messages[3].content)."
+          },
+          "original": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Verbatim excerpt of the segment to change. Must be found exactly like this."
+          },
+          "occurrence": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Which occurrence of original in the segment the change applies to, from 1. With several occurrences, make one change per occurrence."
+          },
+          "action": {
+            "enum": ["replace", "generalize", "remove"],
+            "description": "replace = swap for a placeholder, generalize = swap for a more general description, remove = remove and mark."
+          },
+          "replacement": {
+            "type": "string",
+            "description": "The text to insert. Placeholders in square brackets, for example [PERSON_1] or [removed: identifying detail]."
+          },
+          "category": {
+            "enum": ["person", "organization", "place", "role", "event", "date", "contact", "id", "health", "other"],
+            "description": "What kind of identifier the text is."
+          },
+          "reason": {
+            "type": "string",
+            "description": "A short reason, for example why the combination identifies someone in this population."
+          },
+          "round": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "The pass that found the change: 1 = first pass (default), 2 = re-read."
+          }
+        }
+      }
+    },
+    "residual_risk": {
+      "enum": ["low", "medium", "high"],
+      "description": "The assessed risk of identification after the changes, given the population and recipients in policy.json."
+    },
+    "needs_review": {
+      "type": "array",
+      "description": "Uncertain cases for a human to decide. Taken out of the list once decided.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["position", "note"],
+        "properties": {
+          "position": { "type": ["integer", "null"] },
+          "field": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

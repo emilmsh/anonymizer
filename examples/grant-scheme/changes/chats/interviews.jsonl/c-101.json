@@ -1,0 +1,72 @@
+{
+  "document_id": "chats/interviews.jsonl/c-101",
+  "policy_version": "1",
+  "model": "example, written by hand",
+  "passes": 2,
+  "changes": [
+    {
+      "position": null,
+      "field": "messages[1].content",
+      "original": "Mari",
+      "occurrence": 1,
+      "action": "replace",
+      "replacement": "[PERSON_1]",
+      "category": "person",
+      "reason": "The participant's first name."
+    },
+    {
+      "position": null,
+      "field": "messages[1].content",
+      "original": "the grants coordinator in Nordvik",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[the person responsible for grants] in [a small municipality in Northern Norway]",
+      "category": "role",
+      "reason": "Role and municipality point to one person."
+    },
+    {
+      "position": null,
+      "field": "messages[1].content",
+      "original": "since my colleague retired",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[for some time]",
+      "category": "other",
+      "reason": "Working alone since a colleague retired narrows it down to one person.",
+      "round": 2
+    },
+    {
+      "position": null,
+      "field": "messages[2].content",
+      "original": "Nordvik",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[the municipality]",
+      "category": "place",
+      "reason": "The interviewer repeats the municipality."
+    },
+    {
+      "position": null,
+      "field": "summary",
+      "original": "Grants coordinator in Nordvik",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[Person responsible for grants] in [a small municipality in Northern Norway]",
+      "category": "role",
+      "reason": "The summary repeats role and municipality."
+    },
+    {
+      "position": null,
+      "field": "summary",
+      "original": "since a colleague retired",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[for some time]",
+      "category": "other",
+      "reason": "The summary repeats the detail about the colleague.",
+      "round": 2
+    }
+  ],
+  "residual_risk": "low",
+  "needs_review": []
+}

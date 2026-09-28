@@ -1,0 +1,141 @@
+{
+  "document_id": "Interview Kari Nordmann.txt",
+  "policy_version": "1",
+  "model": "example, written by hand",
+  "passes": 2,
+  "changes": [
+    {
+      "position": 2,
+      "field": "content",
+      "original": "12 March 2026",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[2026]",
+      "category": "date",
+      "reason": "The rules say year instead of exact dates."
+    },
+    {
+      "position": 3,
+      "field": "content",
+      "original": "Ola Nordmann",
+      "occurrence": 1,
+      "action": "replace",
+      "replacement": "[PERSON_1]",
+      "category": "person",
+      "reason": "The interviewer's name can be linked to the project and the time."
+    },
+    {
+      "position": 4,
+      "field": "content",
+      "original": "Kari Nordmann",
+      "occurrence": 1,
+      "action": "replace",
+      "replacement": "[PERSON_2]",
+      "category": "person",
+      "reason": "The respondent's name."
+    },
+    {
+      "position": 4,
+      "field": "content",
+      "original": "Fjordvik municipality",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[small municipality in Western Norway]",
+      "category": "place",
+      "reason": "Municipality names become size and region."
+    },
+    {
+      "position": 7,
+      "field": "content",
+      "original": "the only lawyer in child welfare in Fjordvik municipality",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[an employee in a municipal service] in [a small municipality in Western Norway]",
+      "category": "role",
+      "reason": "The only lawyer in the service in a named municipality points to one person."
+    },
+    {
+      "position": 7,
+      "field": "content",
+      "original": "four of us",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[a few] of us",
+      "category": "other",
+      "reason": "The exact number of employees can point to the service."
+    },
+    {
+      "position": 7,
+      "field": "content",
+      "original": "since 1998",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[for over 20 years]",
+      "category": "date",
+      "reason": "Length of service together with the role can point to the person.",
+      "round": 2
+    },
+    {
+      "position": 8,
+      "field": "content",
+      "original": "the only lawyer in Fjordvik",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[an employee in a municipal service] in [a small municipality in Western Norway]",
+      "category": "role",
+      "reason": "The interviewer repeats the role and the municipality."
+    },
+    {
+      "position": 9,
+      "field": "content",
+      "original": "Fjordvik is small",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[The place] is small",
+      "category": "place",
+      "reason": "The municipality is repeated."
+    },
+    {
+      "position": 9,
+      "field": "content",
+      "original": "the inspection case last year, which Fjordvik-Posten wrote a lot about",
+      "occurrence": 1,
+      "action": "remove",
+      "replacement": "[removed: event covered by the media]",
+      "category": "event",
+      "reason": "An inspection case covered by the local paper points to the municipality."
+    },
+    {
+      "position": 13,
+      "field": "content",
+      "original": "Per Hansen",
+      "occurrence": 1,
+      "action": "replace",
+      "replacement": "[PERSON_3]",
+      "category": "person",
+      "reason": "The manager's name."
+    },
+    {
+      "position": 13,
+      "field": "content",
+      "original": "on sick leave with burnout for three months last year",
+      "occurrence": 1,
+      "action": "remove",
+      "replacement": "[removed: health information]",
+      "category": "health",
+      "reason": "Health information about an identifiable person."
+    },
+    {
+      "position": 15,
+      "field": "content",
+      "original": "kari.nordmann@fjordvik.kommune.no",
+      "occurrence": 1,
+      "action": "remove",
+      "replacement": "[removed: email]",
+      "category": "contact",
+      "reason": "The email address holds the name and the municipality."
+    }
+  ],
+  "residual_risk": "low",
+  "needs_review": []
+}

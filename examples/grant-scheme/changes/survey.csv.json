@@ -1,0 +1,51 @@
+{
+  "document_id": "survey.csv",
+  "policy_version": "1",
+  "model": "example, written by hand",
+  "passes": 2,
+  "changes": [
+    {
+      "position": 2,
+      "field": "challenges",
+      "original": "As the only manager with a Sámi background in the region",
+      "occurrence": 1,
+      "action": "remove",
+      "replacement": "[removed: identifying trait]",
+      "category": "other",
+      "reason": "Ethnic background and role in the region point to one person."
+    },
+    {
+      "position": 4,
+      "field": "challenges",
+      "original": "Per Hansen",
+      "occurrence": 1,
+      "action": "replace",
+      "replacement": "[PERSON_1]",
+      "category": "person",
+      "reason": "A colleague's name."
+    },
+    {
+      "position": 4,
+      "field": "challenges",
+      "original": "in January",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[recently]",
+      "category": "date",
+      "reason": "When a colleague left can point to the workplace.",
+      "round": 2
+    },
+    {
+      "position": 5,
+      "field": "challenges",
+      "original": "the only municipality in the county that has been refused twice",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[a municipality that has been refused more than once]",
+      "category": "event",
+      "reason": "The only municipality in the county refused twice can be found in public decisions."
+    }
+  ],
+  "residual_risk": "low",
+  "needs_review": []
+}

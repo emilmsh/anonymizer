@@ -1,0 +1,7 @@
+respondent_id;email;municipality;role;submitted;challenges;suggestions
+R001;anne.hansen@example.no;Fjordvik;Case worker;2026-03-02 09:14;The application form is too long.;A shorter form.
+R002;;Lyngheim;Manager;2026-03-02 11:40;As the only manager with a Sámi background in the region, I am often asked for advice.;More guidance from the directorate.
+R003;ola@example.no;Nordvik;Finance;2026-03-03 08:02;No big challenges.;
+R004;;Fjordvik;Case worker;2026-03-03 14:25;My colleague Per Hansen and I shared the work, but he left in January.;Clearer deadlines.
+R005;;Sørvik;Manager;2026-03-04 10:10;We are the only municipality in the county that has been refused twice.;Better reasons for refusals.
+R006;;Lyngheim;Finance;2026-03-05 16:45;Reporting takes time, especially in December.;One common deadline.

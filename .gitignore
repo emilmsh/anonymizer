@@ -1,0 +1,15 @@
+# Real data must never enter the repository. Work in a folder outside it.
+# The patterns apply at the root; the fictional example lives in examples/.
+/raw/
+/work/
+/data/
+/out/
+/changes/
+/review/
+*.zip
+*.xlsx
+
+# Python
+__pycache__/
+*.pyc
+.venv/

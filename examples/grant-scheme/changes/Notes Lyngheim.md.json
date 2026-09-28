@@ -1,0 +1,101 @@
+{
+  "document_id": "Notes Lyngheim.md",
+  "policy_version": "1",
+  "model": "example, written by hand",
+  "passes": 2,
+  "changes": [
+    {
+      "position": 1,
+      "field": "content",
+      "original": "the finance director of Lyngheim municipality",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[a finance manager] in [a large municipality in Northern Norway]",
+      "category": "role",
+      "reason": "Job title and municipality point to one person."
+    },
+    {
+      "position": 3,
+      "field": "content",
+      "original": "3 April 2026",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[2026]",
+      "category": "date",
+      "reason": "The rules say year instead of exact dates."
+    },
+    {
+      "position": 3,
+      "field": "content",
+      "original": "Ola Nordmann",
+      "occurrence": 1,
+      "action": "replace",
+      "replacement": "[PERSON_1]",
+      "category": "person",
+      "reason": "The note taker's name."
+    },
+    {
+      "position": 7,
+      "field": "content",
+      "original": "Lyngheim",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[The municipality]",
+      "category": "place",
+      "reason": "The municipality's name."
+    },
+    {
+      "position": 7,
+      "field": "content",
+      "original": "about 40,000",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[between 20,000 and 50,000]",
+      "category": "other",
+      "reason": "The number of inhabitants points to the municipality."
+    },
+    {
+      "position": 7,
+      "field": "content",
+      "original": "the same year we merged the finance departments of North Lyngheim and South Lyngheim",
+      "occurrence": 1,
+      "action": "remove",
+      "replacement": "[removed: identifying event]",
+      "category": "event",
+      "reason": "The merger and the place names point to the municipality."
+    },
+    {
+      "position": 11,
+      "field": "content",
+      "original": "Fjordråd AS",
+      "occurrence": 1,
+      "action": "replace",
+      "replacement": "[ORGANIZATION_1]",
+      "category": "organization",
+      "reason": "The consultancy can be linked to the municipality through public procurement."
+    },
+    {
+      "position": 11,
+      "field": "content",
+      "original": "NOK 350,000",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[a six-figure sum]",
+      "category": "other",
+      "reason": "An exact amount can be found in public accounts.",
+      "round": 2
+    },
+    {
+      "position": 13,
+      "field": "content",
+      "original": "the finance director",
+      "occurrence": 1,
+      "action": "generalize",
+      "replacement": "[the manager]",
+      "category": "role",
+      "reason": "The job title is repeated."
+    }
+  ],
+  "residual_risk": "low",
+  "needs_review": []
+}

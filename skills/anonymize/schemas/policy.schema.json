@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/emilmsh/anonymizer/skills/anonymize/schemas/policy.schema.json",
+  "title": "Anonymization rules for a project",
+  "description": "Goal, suitability, file rules and what to keep, generalize and remove in one project. Must not hold personal data about the people interviewed or mentioned.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["policy_version", "project", "goal", "assessment", "population", "analysis_needs", "keep", "generalize", "remove"],
+  "properties": {
+    "policy_version": {
+      "type": "string",
+      "description": "Version of the rules. Changed when the rules change, and written in every change list."
+    },
+    "project": { "type": "string", "description": "The project's name." },
+    "goal": {
+      "enum": ["anonymous", "risk_reduction"],
+      "description": "anonymous = the data may be used by providers without a data processing agreement; requires deleting the keys. risk_reduction = the keys are kept, and the data is still processed as personal data at approved providers."
+    },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recipients", "suitable", "rationale"],
+      "description": "The suitability decision, made by a human before the data is read.",
+      "properties": {
+        "recipients": {
+          "type": "string",
+          "description": "Who will use the anonymized data, and what do they know about the population? For example whether they know the list of respondents."
+        },
+        "suitable": {
+          "type": "boolean",
+          "description": "Can the data be responsibly anonymized without losing its purpose?"
+        },
+        "rationale": { "type": "string", "description": "The reason for the answer." },
+        "keys": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Keys outside the project folder to delete when the goal is anonymous, for example data in the collection tool, recruitment lists and backups. raw/, changes/ and review/ come in addition."
+        },
+        "decided_by": { "type": "string", "description": "Who made the decision. A role is enough." },
+        "decided_on": { "type": "string", "description": "Date of the decision, YYYY-MM-DD." }
+      }
+    },
+    "population": {
+      "type": "string",
+      "description": "Who the respondents are, how many, and how well they and the readers know each other. The smaller and better known the population, the stricter the assessment."
+    },
+    "analysis_needs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What the analysis needs to keep, for example size of municipality or type of role."
+    },
+    "keep": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What may stay unchanged, for example the names of tools or public schemes that the study is about."
+    },
+    "generalize": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["what", "to"],
+        "properties": {
+          "what": { "type": "string" },
+          "to": { "type": "string" }
+        }
+      },
+      "description": "Identifiers replaced by a more general description."
+    },
+    "remove": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What is always removed and marked."
+    },
+    "placeholders": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Pattern for placeholders per category. n is numbered per document (per row in CSV files, per record in JSON Lines files)."
+    },
+    "files": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/fileRule" },
+      "description": "File rules. The first rule whose match pattern fits the path under raw/ applies. Files without a rule are handled by their extension; CSV and JSON Lines files need a rule."
+    },
+    "notes": { "type": "string" }
+  },
+  "$defs": {
+    "fileRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["match"],
+      "properties": {
+        "match": { "type": "string", "description": "Pattern for the path under raw/, for example data/*.csv. * matches any characters, also /." },
+        "action": { "enum": ["anonymize", "copy", "exclude"], "description": "anonymize (default), copy unchanged (only files without personal data) or exclude." },
+        "type": { "enum": ["text", "docx", "csv", "jsonl"], "description": "By default from the file extension." },
+        "note": { "type": "string", "description": "Why the rule is as it is." },
+        "text_columns": { "type": "array", "items": { "type": "string" }, "description": "CSV: free text to anonymize." },
+        "keep_columns": { "type": "array", "items": { "type": "string" }, "description": "CSV: kept unchanged, for example fixed answer options that do not identify." },
+        "date_columns": { "type": "array", "items": { "type": "string" }, "description": "CSV: timestamps shortened to the date." },
+        "drop_columns": { "type": "array", "items": { "type": "string" }, "description": "CSV: removed, for example respondent ID, email and municipality." },
+        "name_columns": { "type": "array", "items": { "type": "string" }, "description": "CSV: columns whose values are names. The residual check searches the output for them." },
+        "id": { "type": "string", "description": "JSON Lines: path to the record ID. It is replaced with a new ID. Without it, the line number is used." },
+        "text": { "type": "array", "items": { "type": "string" }, "description": "JSON Lines: paths to free text to anonymize, for example messages[].content." },
+        "keep": { "type": "array", "items": { "type": "string" }, "description": "JSON Lines: paths kept unchanged, for example messages[].role." },
+        "dates": { "type": "array", "items": { "type": "string" }, "description": "JSON Lines: paths to timestamps shortened to the date." },
+        "names": { "type": "array", "items": { "type": "string" }, "description": "JSON Lines: paths whose values are names. The residual check searches the output for them." },
+        "skip": { "type": "object", "description": "JSON Lines: records with all of these values are left out, for example {\"is_test\": true}." }
+      }
+    }
+  }
+}

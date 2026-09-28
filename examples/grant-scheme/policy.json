@@ -1,0 +1,107 @@
+{
+  "policy_version": "1",
+  "project": "Evaluation of a grant scheme for municipalities (fictional example)",
+  "goal": "anonymous",
+  "assessment": {
+    "recipients": "The analysts in the project and the AI tools they use, including providers without a data processing agreement. The analysts do not have the recruitment list. The client only gets the report, but knows the list of grant recipients.",
+    "suitable": true,
+    "rationale": "The analysis needs size of municipality, region and type of role, not which municipality or person. With about 80 possible respondents across many municipalities, this can be generalized without losing the purpose.",
+    "keys": [
+      "The interviews and survey answers in the collection tools",
+      "The recruitment list with names, municipalities and contact details",
+      "Backups of the project folder"
+    ],
+    "decided_by": "Project manager",
+    "decided_on": "2026-09-27"
+  },
+  "population": "About 80 case workers and managers in municipalities that received a grant. Many know each other from networks, and the client has the list of grant recipients.",
+  "analysis_needs": [
+    "Size of municipality (small, medium, large)",
+    "Region",
+    "Type of role (case worker, manager, finance)",
+    "The year the municipality received the grant"
+  ],
+  "keep": [
+    "The name of the grant scheme and the directorate that runs it",
+    "Names of case management systems and digital tools",
+    "General descriptions of tasks"
+  ],
+  "generalize": [
+    {
+      "what": "Names of municipalities and places",
+      "to": "Size of municipality and region, for example [small municipality in Western Norway]"
+    },
+    {
+      "what": "Job titles",
+      "to": "Role category, for example [manager]"
+    },
+    {
+      "what": "Exact dates",
+      "to": "Year or half-year"
+    },
+    {
+      "what": "Numbers of employees, inhabitants or amounts that point to one municipality",
+      "to": "Order of magnitude"
+    }
+  ],
+  "remove": [
+    "Names of people, including colleagues, managers and politicians",
+    "Contact details and ID numbers",
+    "Health information and other special categories about identifiable people",
+    "Events covered by the media or known in the field that point to a municipality or person"
+  ],
+  "placeholders": {
+    "person": "[PERSON_n]",
+    "organization": "[ORGANIZATION_n]",
+    "place": "[PLACE_n]"
+  },
+  "files": [
+    {
+      "match": "survey.csv",
+      "text_columns": [
+        "challenges",
+        "suggestions"
+      ],
+      "keep_columns": [
+        "role"
+      ],
+      "date_columns": [],
+      "drop_columns": [
+        "respondent_id",
+        "email",
+        "municipality",
+        "submitted"
+      ],
+      "name_columns": [
+        "email"
+      ]
+    },
+    {
+      "match": "chats/interviews.jsonl",
+      "id": "id",
+      "text": [
+        "messages[].content",
+        "summary"
+      ],
+      "keep": [
+        "messages[].role"
+      ],
+      "dates": [
+        "started_at"
+      ],
+      "names": [
+        "participant"
+      ],
+      "skip": {
+        "test": true
+      },
+      "note": "One interview per line. The invite link name in 'source' and the time of each message are left out."
+    },
+    {
+      "match": "chats/overview.html",
+      "action": "exclude",
+      "note": "An HTML view of the same interviews, with the participants' names."
+    }
+  ],
+  "notes": "When in doubt, generalize more. The client knows the population, so combinations of role, place and year must be assessed together."
+}

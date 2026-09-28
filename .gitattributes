@@ -1,0 +1,2 @@
+# The fictional example must be byte for byte the same on every platform.
+examples/** -text

@@ -1,0 +1,114 @@
+{
+  "format": "anonymizer-package",
+  "format_version": 1,
+  "project": "Evaluation of a grant scheme for municipalities (fictional example)",
+  "anonymization": {
+    "tool": "anonymizer",
+    "version": "0.5.0",
+    "at": "2026-09-28",
+    "policy_version": "1",
+    "new_ids": true,
+    "documents": 5,
+    "changes": 33,
+    "by_category": {
+      "person": 7,
+      "role": 6,
+      "other": 6,
+      "place": 4,
+      "date": 4,
+      "event": 3,
+      "health": 1,
+      "contact": 1,
+      "organization": 1
+    },
+    "by_action": {
+      "replace": 8,
+      "generalize": 20,
+      "remove": 5
+    },
+    "by_round": {
+      "1": 28,
+      "2": 5
+    },
+    "residual_risk": {
+      "low": 5
+    },
+    "needs_review": 0,
+    "reread": 5,
+    "models": [
+      "example, written by hand"
+    ],
+    "measures": [
+      "The files have new names, so file and folder names cannot point back to the people.",
+      "Columns removed from CSV files: email, municipality, respondent_id, submitted.",
+      "Rows in CSV files are shuffled, so the order cannot be linked to the original.",
+      "Only the fields named in the file rules are kept in JSON Lines files. Records get new IDs and are sorted by them.",
+      "Dates in JSON Lines files are shortened to the date.",
+      "1 record is left out by 'skip' in the file rules.",
+      "1 file is left out, as the file rules say."
+    ]
+  },
+  "documents": [
+    {
+      "file": "documents/document-28452b58.jsonl",
+      "kind": "jsonl",
+      "documents": 2,
+      "sha256": "a130ce5bc068f8bcc5580663ec92a7c0859a8d1eb46472125fa3cb8802a4aace"
+    },
+    {
+      "file": "documents/document-5570034f.md",
+      "kind": "text",
+      "documents": 1,
+      "sha256": "52e2ed838a73cac90a00a3a815e341b8048c259771994886196fd555455d1a02"
+    },
+    {
+      "file": "documents/document-b376d4bc.csv",
+      "kind": "csv",
+      "documents": 1,
+      "sha256": "f90c6070f99a51f967602a4d7c265283e7e6f76d25635da31743c73dbf5fe4e6"
+    },
+    {
+      "file": "documents/document-e584f584.txt",
+      "kind": "text",
+      "documents": 1,
+      "sha256": "0a942476d804a3b1f7089cec3170413776dae869f70e8dcd8acdc1e2dabcdcac"
+    }
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 879,
+      "sha256": "07d62151d7fee8a5ee05a710c133821fd54286dffa8093882b328bb73fd8006d"
+    },
+    {
+      "path": "CLAUDE.md",
+      "bytes": 88,
+      "sha256": "b4099ce52edea3d07f5b9e522ffbb72ebe69622578368455bbfd0336e344ae37"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1194,
+      "sha256": "d57b0678869f3c516b65e636f2714e015589a77f6f24ea83c0743ad027eadb91"
+    },
+    {
+      "path": "documents/document-28452b58.jsonl",
+      "bytes": 1199,
+      "sha256": "a130ce5bc068f8bcc5580663ec92a7c0859a8d1eb46472125fa3cb8802a4aace"
+    },
+    {
+      "path": "documents/document-5570034f.md",
+      "bytes": 624,
+      "sha256": "52e2ed838a73cac90a00a3a815e341b8048c259771994886196fd555455d1a02"
+    },
+    {
+      "path": "documents/document-b376d4bc.csv",
+      "bytes": 500,
+      "sha256": "f90c6070f99a51f967602a4d7c265283e7e6f76d25635da31743c73dbf5fe4e6"
+    },
+    {
+      "path": "documents/document-e584f584.txt",
+      "bytes": 999,
+      "sha256": "0a942476d804a3b1f7089cec3170413776dae869f70e8dcd8acdc1e2dabcdcac"
+    }
+  ]
+}

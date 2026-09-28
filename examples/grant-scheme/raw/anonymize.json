@@ -1,0 +1,22 @@
+{
+  "anonymize_package": 1,
+  "description": "Chat interviews from an interview tool: one interview per line in chats/interviews.jsonl, and an HTML overview of the same interviews.",
+  "files": [
+    {
+      "match": "chats/interviews.jsonl",
+      "id": "id",
+      "text": ["messages[].content", "summary"],
+      "keep": ["messages[].role"],
+      "dates": ["started_at"],
+      "names": ["participant"],
+      "skip": { "test": true },
+      "note": "One interview per line. The invite link name in 'source' and the time of each message are left out."
+    },
+    {
+      "match": "chats/overview.html",
+      "action": "exclude",
+      "note": "An HTML view of the same interviews, with the participants' names."
+    }
+  ],
+  "notes": "Test interviews are marked with \"test\": true."
+}

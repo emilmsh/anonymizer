@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use Anonymizer, please cite it as below."
+title: "Anonymizer: AI-assisted anonymization of free text with personal data"
+type: software
+authors:
+  - family-names: "Halseth"
+    given-names: "Emil Mathias Strøm"
+    website: "https://emilmsh.github.io"
+version: "0.5.0"
+date-released: "2026-09-28"
+license: Apache-2.0
+repository-code: "https://github.com/emilmsh/anonymizer"
+url: "https://emilmsh.github.io/#software"
+keywords:
+  - anonymization
+  - personal data
+  - GDPR
+  - qualitative data
+  - large language models
+abstract: >-
+  A skill for the AI tools Claude Code, Codex and OpenCode that anonymizes
+  interviews, meeting notes and open-ended survey answers before analysis. A
+  language model at an approved provider writes change lists under project
+  rules, scripts apply and check them, and a human decides whether the data is
+  suitable and approves the assessment.
