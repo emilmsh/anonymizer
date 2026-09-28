@@ -47,7 +47,14 @@ STOPWORDS = {
     "Survey", "Undersøkelse", "Undersokelse", "Spørreundersøkelse", "Runde", "Round", "Del", "Part", "Versjon",
     "Version", "Utkast", "Draft", "Endelig", "Final", "Kopi", "Copy", "Informant", "Deltaker", "Participant",
     "Fokusgruppe", "Focus", "Group", "Gruppe", "Møte", "Meeting", "Data", "Rådata", "Eksport", "Export",
+    # Common file names in exports and project folders.
+    "Readme", "Agents", "Claude", "License", "Notice", "Changelog", "Manifest", "Index", "Anonymize",
 }
+_STOP = {word.casefold() for word in STOPWORDS}
+
+
+def _is_name_token(token: str) -> bool:
+    return len(token) >= 3 and token[0].isupper() and token.casefold() not in _STOP
 
 EMAIL = re.compile(r"(?<![\w.+-])[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
 URL = re.compile(r"\b(?:https?://|www\.)\S+", re.IGNORECASE)
@@ -101,9 +108,7 @@ def _name_terms(name: str) -> list[tuple[str, str]]:
     terms = [("name", name)]
     tokens = re.findall(r"[^\W\d_]+", name)
     if len(tokens) > 1:
-        for token in tokens:
-            if len(token) >= 3 and token[0].isupper() and token not in STOPWORDS:
-                terms.append(("name_part", token))
+        terms += [("name_part", token) for token in tokens if _is_name_token(token)]
     return terms
 
 
@@ -114,8 +119,7 @@ def known_terms(original: Path | None, names_file: Path | None, policy: dict | N
             raise FileNotFoundError(f"Cannot find the folder {original}")
         for path in sorted(p for p in original.rglob("*") if p.is_file()):
             for part in path.relative_to(original).with_suffix("").parts:
-                terms += [("file_name", token) for token in re.findall(r"[^\W\d_]+", part)
-                          if len(token) >= 3 and token[0].isupper() and token not in STOPWORDS]
+                terms += [("file_name", token) for token in re.findall(r"[^\W\d_]+", part) if _is_name_token(token)]
         if policy is not None:
             for value in formats.names_in(original, policy):
                 terms += _name_terms(value)

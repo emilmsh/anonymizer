@@ -40,6 +40,8 @@ class CheckResidualsTest(unittest.TestCase):
         self.original = root / "raw"
         (self.original / "round 1").mkdir(parents=True)
         (self.original / "round 1" / "Interview Kari Nordmann.txt").write_text("…", encoding="utf-8")
+        for name in ("README.md", "AGENTS.md", "CLAUDE.md", "anonymize.json"):
+            (self.original / name).write_text("…", encoding="utf-8")
         (self.original / "chats.jsonl").write_text(
             json.dumps({"id": "a", "person": "Øystein Ås", "text": "x"}) + "\n", encoding="utf-8")
         self.target = root / "out"
@@ -70,6 +72,10 @@ class CheckResidualsTest(unittest.TestCase):
         self.assertIn(("name", "Øystein ås"), found)
         self.assertIn(("name_part", "Øystein"), found)
         self.assertNotIn(("file_name", "Interview"), found)
+
+    def test_common_file_names_are_not_names(self):
+        self.write("README.md", "See AGENTS.md and CLAUDE.md. README first.")
+        self.assertEqual(self.kinds(), [])
 
     def test_finds_contact_details_and_numbers(self):
         fnr = make_fnr("150385")

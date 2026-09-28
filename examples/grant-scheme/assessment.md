@@ -1,7 +1,7 @@
 # Assessment of the anonymization
 
 **Project:** Evaluation of a grant scheme for municipalities (fictional example)
-**Made:** 2026-09-28 with anonymize 0.5.0, rules version 1
+**Made:** 2026-09-28 with anonymize 0.5.1, rules version 1
 **Goal:** Anonymous data. The anonymized data may be used by providers without a data processing agreement once the keys are deleted.
 
 This file holds no personal data and can be kept as documentation. The method is

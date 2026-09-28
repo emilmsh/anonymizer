@@ -212,4 +212,4 @@ shows a ready-made reference under "Cite this repository", taken from
 [CITATION.cff](CITATION.cff):
 
 > Halseth, E. M. S. (2026). *Anonymizer: AI-assisted anonymization of free text
-> with personal data* (version 0.5.0) [Software]. https://github.com/emilmsh/anonymizer
+> with personal data* (version 0.5.1) [Software]. https://github.com/emilmsh/anonymizer

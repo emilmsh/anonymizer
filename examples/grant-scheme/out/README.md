@@ -1,6 +1,6 @@
 # Anonymized material: Evaluation of a grant scheme for municipalities (fictional example)
 
-5 documents, anonymized with anonymizer 0.5.0
+5 documents, anonymized with anonymizer 0.5.1
 under policy version 1. 33 changes
 (person 7, other 6, role 6, date 4, place 4, event 3, contact details 1, health 1, organization 1).
 

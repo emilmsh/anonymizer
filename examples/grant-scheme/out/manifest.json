@@ -4,7 +4,7 @@
   "project": "Evaluation of a grant scheme for municipalities (fictional example)",
   "anonymization": {
     "tool": "anonymizer",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "at": "2026-09-28",
     "policy_version": "1",
     "new_ids": true,
@@ -88,7 +88,7 @@
     {
       "path": "README.md",
       "bytes": 1194,
-      "sha256": "d57b0678869f3c516b65e636f2714e015589a77f6f24ea83c0743ad027eadb91"
+      "sha256": "ee74500bb9c08fcf5ef0a1c78cd2296d571e610d73bc547a74df26fc59cc2fc2"
     },
     {
       "path": "documents/document-28452b58.jsonl",
